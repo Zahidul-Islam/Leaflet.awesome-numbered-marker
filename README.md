@@ -16,5 +16,9 @@ A plugin that adds number markers for Leaflet.
 ````
 
 ````js
-var marker = L.marker([51.941196,4.512291], {icon: new L.AwesomeNumberMarkers({number: 1, markerColor: "blue"})}).addTo(map);
+var blueMarker = L.marker([51.941196,4.512291], {
+                    icon: new L.AwesomeNumberMarkers({
+                      number: 1, 
+                      markerColor: "blue"
+                  })}).addTo(map);
 ````
