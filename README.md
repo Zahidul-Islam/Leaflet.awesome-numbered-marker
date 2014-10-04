@@ -2,7 +2,7 @@
 A plugin that adds number markers for Leaflet.
 
 ## Screenshots
-![AwesomeNumberMarkers screenshot](https://raw.github.com/Zahidul-Islam/Leaflet.awesome-numbered-marker/master/screenshots/leaflet-awesomeNumber-markers.png "Screenshot of AwesomeNumberMarkers")
+![AwesomeNumberMarkers screenshot](https://raw.githubusercontent.com/Zahidul-Islam/Leaflet.awesome-numbered-marker/master/screenshots/leaflet-awesome-number-marker.png "Screenshot of AwesomeNumberMarkers")
 
 
 ## Usage
