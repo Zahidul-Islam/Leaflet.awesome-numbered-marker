@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Leaflet number markers</title>
+
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+  <link rel="stylesheet" href="../src/leaflet_awesome_number_markers.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+  <div id="map" style="width: 600px; height: 600px; border: 1px solid #ccc"></div>
+  
+  <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+  <script src="../src/leaflet_awesome_number_markers.js"></script>
+  <script type="text/javascript">
+    function getRandomLatLng(map) {
+      var bounds = map.getBounds(),
+        southWest = bounds.getSouthWest(),
+        northEast = bounds.getNorthEast(),
+        lngSpan = northEast.lng - southWest.lng,
+        latSpan = northEast.lat - southWest.lat;
+
+      return new L.LatLng(
+        southWest.lat + latSpan * Math.random(),
+        southWest.lng + lngSpan * Math.random()
+      );
+    }
+
+    function pickRandomColor(){
+      var colors = ['red', 'darkred', 'orange', 'green', 'darkgreen', 'blue', 'purple', 'darkpuple', 'cadetblue'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    (function(){
+      var map = L.map('map');
+
+      // create the tile layer with correct attribution
+      var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+      var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+      var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 12, attribution: osmAttrib});   
+
+      map.setView(new L.LatLng(51.505, -0.09),13);
+      map.addLayer(osm);
+
+      var markers = new L.FeatureGroup();
+
+      for (var i = 1; i < 10; i++) {
+        var color = pickRandomColor();
+        markers.addLayer(
+          new L.Marker(
+            getRandomLatLng(map),
+            { 
+              icon: new L.AwesomeNumberMarkers({number: i, markerColor: color}) 
+            }
+          )
+        );
+      }
+      markers.addTo(map);      
+    })();
+
+    
+
+  </script>
+</body>
+</html>
